@@ -11,7 +11,10 @@ import SwiftUI
 struct ListViewApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack{
+                    BooksListView()
+            }
+            
         }
     }
 }
