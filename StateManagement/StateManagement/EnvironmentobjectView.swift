@@ -20,7 +20,7 @@ class UserProfile: ObservableObject {
 }
 
 struct EnvironmentobjectView: View {
-    @StateObject var profile = UserProfile(name: "Peter", favoriteProgrammingLanguage: "Swift", favoriteColor: .pink)
+    @StateObject var profile = UserProfile(name: "Peter1", favoriteProgrammingLanguage: "Swift", favoriteColor: .pink)
     @State var isSettingShown = false
     var body: some View {
         VStack(alignment: .leading) {
