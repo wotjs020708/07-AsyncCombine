@@ -11,6 +11,8 @@
 		4BBF3F652C2003940026794E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF3F642C2003940026794E /* ContentView.swift */; };
 		4BBF3F672C2003950026794E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BBF3F662C2003950026794E /* Assets.xcassets */; };
 		4BBF3F6A2C2003950026794E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BBF3F692C2003950026794E /* Preview Assets.xcassets */; };
+		4BBF3F712C20100A0026794E /* book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF3F702C20100A0026794E /* book.swift */; };
+		4BBF3F732C2011820026794E /* BooksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF3F722C2011820026794E /* BooksListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		4BBF3F642C2003940026794E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4BBF3F662C2003950026794E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BBF3F692C2003950026794E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4BBF3F702C20100A0026794E /* book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = book.swift; sourceTree = "<group>"; };
+		4BBF3F722C2011820026794E /* BooksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				4BBF3F622C2003940026794E /* ListViewApp.swift */,
 				4BBF3F642C2003940026794E /* ContentView.swift */,
+				4BBF3F702C20100A0026794E /* book.swift */,
+				4BBF3F722C2011820026794E /* BooksListView.swift */,
 				4BBF3F662C2003950026794E /* Assets.xcassets */,
 				4BBF3F682C2003950026794E /* Preview Content */,
 			);
@@ -139,6 +145,8 @@
 			files = (
 				4BBF3F652C2003940026794E /* ContentView.swift in Sources */,
 				4BBF3F632C2003940026794E /* ListViewApp.swift in Sources */,
+				4BBF3F712C20100A0026794E /* book.swift in Sources */,
+				4BBF3F732C2011820026794E /* BooksListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
