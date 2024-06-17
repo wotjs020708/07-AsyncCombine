@@ -23,10 +23,48 @@ struct EnvironmentobjectView: View {
     @StateObject var profile = UserProfile(name: "Peter", favoriteProgrammingLanguage: "Swift", favoriteColor: .pink)
     @State var isSettingShown = false
     var body: some View {
-        Text("Hello, World!")
+        VStack(alignment: .leading) {
+            Form {
+                Section {
+                    Text("This is  just some random data")
+                    Text("Let's assume this was the main screen of an app")
+                    Text("Tap the cog icon to go gto the fake settings screen")
+                }
+                
+            }
+            HStack {
+                Text("Sign in as \(profile.name)")
+                    .foregroundStyle(Color(UIColor.systemBackground))
+                Spacer()
+            }
+            .padding(30)
+            .background(profile.favoriteColor)
+        }
+        .ignoresSafeArea(edges: .bottom)
+        .navigationTitle("@EnvironmentObject")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: showSetting) {
+                    Image(systemName: "gearshape")
+                }
+            }
+        }
+        .sheet(isPresented: $isSettingShown){
+            NavigationStack{
+                SettingScreen()
+            }
+            .environmentObject(profile)
+        }   
     }
+    func showSetting() {
+        isSettingShown.toggle()
+    }
+    
 }
 
 #Preview {
-    EnvironmentobjectView()
+    NavigationStack{
+        EnvironmentobjectView()
+        
+    }
 }
