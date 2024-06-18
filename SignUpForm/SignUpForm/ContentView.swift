@@ -17,15 +17,47 @@ class SignupFormViewModel: ObservableObject {
     @Published var passwordMessage: String = ""
     @Published var isValid: Bool = false
     
-    private lazy var isUsernameLengthValidpublisher: AnyPublisher<Bool, Never> = {
+    private lazy var isUsernameLengthValidPublisher: AnyPublisher<Bool, Never> = {
         $username.map { $0.count >= 3}.eraseToAnyPublisher()
     }()
     
+    private lazy var isPasswordEmptyPublisher: AnyPublisher<Bool, Never> = {
+        $password.map(\.isEmpty).eraseToAnyPublisher()
+    }()
+    
+    private lazy var isPasswordMatchingPublisher: AnyPublisher<Bool, Never> = {
+        Publishers.CombineLatest($password, $passwordConfirmation)
+            .map(==)
+            .eraseToAnyPublisher()
+    }()
+    
+    private lazy var isPasswordValidPublisher: AnyPublisher<Bool, Never> = {
+        Publishers.CombineLatest(isPasswordEmptyPublisher, isPasswordMatchingPublisher)
+            .map { !$0 && $1 }
+            .eraseToAnyPublisher()
+    }()
+    
+    private lazy var isFormValidPublisher: AnyPublisher<Bool, Never> = {
+        Publishers.CombineLatest(isUsernameLengthValidPublisher, isPasswordValidPublisher)
+            .map { $0 && $1 }
+            .eraseToAnyPublisher()
+    }()
+    
     init() {
-        isUsernameLengthValidpublisher
+        isFormValidPublisher
             .assign(to: &$isValid)
-        isUsernameLengthValidpublisher.map { $0 ? "" : "Username must be at least three characters!"}
+        isUsernameLengthValidPublisher.map { $0 ? "" : "Username must be at least three characters!"}
             .assign(to: &$usernameMessage)
+        Publishers.CombineLatest(isPasswordEmptyPublisher, isPasswordMatchingPublisher)
+            .map { isPasswordEmpty, isPasswordMatching in
+                if isPasswordEmpty {
+                    return "Password must not be empty"
+                } else if !isPasswordMatching {
+                    return "Passwords do not match"
+                }
+                return ""
+            }
+            .assign(to: &$passwordMessage)
     }
 }
 
