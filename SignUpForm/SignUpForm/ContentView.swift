@@ -9,6 +9,8 @@ import SwiftUI
 import Combine
 
 class SignupFormViewModel: ObservableObject {
+    typealias Available = Result<Bool, Error>
+    
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var passwordConfirmation: String = ""
@@ -67,7 +69,11 @@ class SignupFormViewModel: ObservableObject {
             .debounce(for: 0.5, scheduler:  RunLoop.main)
             .removeDuplicates()
             .flatMap { username -> AnyPublisher<Bool, Never> in
-                self.authenticaitonService.checkusernameAvailableNaive(userName: username)
+                self.authenticaitonService.checkUsernameAvailable(userName: username)
+                    .catch{ error in
+                        return Just(false)
+                    }
+                    .eraseToAnyPublisher()
             }
             .receive(on: DispatchQueue.main)
             .share()

@@ -23,19 +23,22 @@ enum NetworkError: Error {
     
 }
 
+enum APIError: LocalizedError {
+    case invalidRequestError(String)
+}
+
 
 class AuthenticationService {
 
-    func checkusernameAvailable(userName: String) -> AnyPublisher<Bool, Never> {
+    func checkUsernameAvailable(userName: String) -> AnyPublisher<Bool, Error> {
         guard let url = URL(string: "http://127.0.0.1:8080/isUserNameAvailable?userName=\(userName)") else {
-            return Just(false).eraseToAnyPublisher()
+            return Fail(error: APIError.invalidRequestError("url invalid")).eraseToAnyPublisher()
         }
         
         return URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
             .decode(type: UserNameAvailableMessage.self, decoder: JSONDecoder())
             .map(\.isAvailable)
-            .replaceError(with: false)
             .eraseToAnyPublisher()
         
     }
