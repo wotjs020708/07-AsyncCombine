@@ -49,37 +49,45 @@ class SignupFormViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }()
     
-    func checkUserNameAvailable(_ userName: String) {
-        authenticaitonService.checkUserNameAvailableWithClosure(userName: userName) {
-            [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let isAvailable):
-                    self?.isUserNameAvailable = isAvailable
-                case .failure(let error):
-                    print("error: \(error)")
-                    self?.isUserNameAvailable = false
-                }
+//    func checkUserNameAvailable(_ userName: String) {
+//        authenticaitonService.checkUserNameAvailableWithClosure(userName: userName) {
+//            [weak self] result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let isAvailable):
+//                    self?.isUserNameAvailable = isAvailable
+//                case .failure(let error):
+//                    print("error: \(error)")
+//                    self?.isUserNameAvailable = false
+//                }
+//            }
+//        }
+//    }
+    
+    private lazy var isUsernameAvailablePublisher: AnyPublisher<Bool, Never> = {
+        $username
+            .debounce(for: 0.5, scheduler:  RunLoop.main)
+            .removeDuplicates()
+            .flatMap { username -> AnyPublisher<Bool, Never> in
+                self.authenticaitonService.checkusernameAvailableNaive(userName: username)
             }
-        }
-    }
+            .receive(on: DispatchQueue.main)
+            .share()
+            .print("share")
+            .eraseToAnyPublisher()
+    }()
 
     
     init() {
-        $username.debounce(for: 0.5, scheduler: DispatchQueue.main)
-            .sink { [weak self] userName in
-                self?.checkUserNameAvailable(userName)
-            }
-            .store(in: &cancellables)
         
         isFormValidPublisher
             .assign(to: &$isValid)
         
-        Publishers.CombineLatest(isUsernameLengthValidPublisher, $isUserNameAvailable)
-            .map { isusernameLegthvalid, isUSerNameAvailable in
-                if !isusernameLegthvalid {
+        Publishers.CombineLatest(isUsernameLengthValidPublisher, isUsernameAvailablePublisher)
+            .map { isUsernameLegthvalid, isUserNameAvailable in
+                if !isUsernameLegthvalid {
                     return "Username must be at least three characters!"
-                } else if !isUSerNameAvailable {
+                } else if !isUserNameAvailable {
                     return "This username is alread taken."
                 }
                 return ""
@@ -108,7 +116,7 @@ struct ContentView: View {
             // Username
             Section{
                 TextField("Username", text: $viewModel.username)
-                    .textInputAutocapitalization(.none)
+                    .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
             } footer: {
                 Text(viewModel.usernameMessage)
@@ -116,8 +124,8 @@ struct ContentView: View {
             }
             // Password
             Section{
-                TextField("Password", text: $viewModel.password)
-                TextField("Repeat Password", text: $viewModel.passwordConfirmation)
+                SecureField("Password", text: $viewModel.password)
+                SecureField("Repeat Password", text: $viewModel.passwordConfirmation)
                   
             } footer: {
                 Text(viewModel.passwordMessage)
