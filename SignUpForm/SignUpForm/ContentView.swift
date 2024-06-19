@@ -8,6 +8,16 @@
 import SwiftUI
 import Combine
 
+extension Publisher {
+    func asResult() -> AnyPublisher<Result<Output, Failure>, Never> {
+        self.map(Result.success)
+            .catch { error in
+                Just(.failure(error))
+            }
+            .eraseToAnyPublisher()
+    }
+}
+
 class SignupFormViewModel: ObservableObject {
     typealias Available = Result<Bool, Error>
     
@@ -45,7 +55,14 @@ class SignupFormViewModel: ObservableObject {
     
     private lazy var isFormValidPublisher: AnyPublisher<Bool, Never> = {
         Publishers.CombineLatest3(isUsernameLengthValidPublisher, isUsernameAvailablePublisher, isPasswordValidPublisher)
-            .map { $0 && $1 && $2}
+            .map { isUsernameLengthValid, isUsernameAvailable, isPasswordValid in
+                switch isUsernameAvailable {
+                case .success(let isAvailable):
+                    return isUsernameLengthValid && isAvailable && isPasswordValid
+                case .failure:
+                    return false
+                }
+            }
             .eraseToAnyPublisher()
     }()
     
@@ -64,16 +81,13 @@ class SignupFormViewModel: ObservableObject {
 //        }
 //    }
     
-    private lazy var isUsernameAvailablePublisher: AnyPublisher<Bool, Never> = {
+    private lazy var isUsernameAvailablePublisher: AnyPublisher<Available, Never> = {
         $username
             .debounce(for: 0.5, scheduler:  RunLoop.main)
             .removeDuplicates()
-            .flatMap { username -> AnyPublisher<Bool, Never> in
+            .flatMap { username -> AnyPublisher<Available, Never> in
                 self.authenticaitonService.checkUsernameAvailable(userName: username)
-                    .catch{ error in
-                        return Just(false)
-                    }
-                    .eraseToAnyPublisher()
+                    .asResult()
             }
             .receive(on: DispatchQueue.main)
             .share()
@@ -89,12 +103,17 @@ class SignupFormViewModel: ObservableObject {
         
         Publishers.CombineLatest(isUsernameLengthValidPublisher, isUsernameAvailablePublisher)
             .map { isUsernameLegthvalid, isUserNameAvailable in
-                if !isUsernameLegthvalid {
+                switch (isUsernameLegthvalid, isUserNameAvailable) {
+                case (false, _):
                     return "Username must be at least three characters!"
-                } else if !isUserNameAvailable {
-                    return "This username is alread taken."
+                case (_, .failure(let error)):
+                    return "Error checking username availablilty: \(error.localizedDescription)"
+                case (_, .success(false)) :
+                    return "This username is already taken."
+                default:
+                    return ""
                 }
-                return ""
+                
             }
             .assign(to: &$usernameMessage)
 //        isUsernameLengthValidPublisher.map { $0 ? "" : "Username must be at least three characters!"}
