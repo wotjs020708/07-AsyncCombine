@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B2A50672C225E0E0014EDDD /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2A50662C225E0E0014EDDD /* AuthenticationService.swift */; };
 		4BBF3F9F2C2169C80026794E /* SignUpFormApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF3F9E2C2169C80026794E /* SignUpFormApp.swift */; };
 		4BBF3FA12C2169C80026794E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF3FA02C2169C80026794E /* ContentView.swift */; };
 		4BBF3FA32C2169C90026794E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BBF3FA22C2169C90026794E /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B2A50662C225E0E0014EDDD /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		4BBF3F9B2C2169C80026794E /* SignUpForm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignUpForm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BBF3F9E2C2169C80026794E /* SignUpFormApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFormApp.swift; sourceTree = "<group>"; };
 		4BBF3FA02C2169C80026794E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				4BBF3F9E2C2169C80026794E /* SignUpFormApp.swift */,
 				4BBF3FA02C2169C80026794E /* ContentView.swift */,
+				4B2A50662C225E0E0014EDDD /* AuthenticationService.swift */,
 				4BBF3FA22C2169C90026794E /* Assets.xcassets */,
 				4BBF3FA42C2169C90026794E /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B2A50672C225E0E0014EDDD /* AuthenticationService.swift in Sources */,
 				4BBF3FA12C2169C80026794E /* ContentView.swift in Sources */,
 				4BBF3F9F2C2169C80026794E /* SignUpFormApp.swift in Sources */,
 			);
