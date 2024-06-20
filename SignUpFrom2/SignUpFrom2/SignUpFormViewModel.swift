@@ -30,6 +30,7 @@ class SignUpFormViewModel: ObservableObject{
             .print("Before share")
             .share()
             .print("share")
+            .dump()
             .eraseToAnyPublisher()
     }()
     
