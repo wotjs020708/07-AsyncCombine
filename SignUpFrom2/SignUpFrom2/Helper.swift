@@ -16,7 +16,7 @@ struct UserNameAvailableMessage: Codable {
 
 struct APIErrorMessage: Decodable {
     var error: Bool
-    var reason: Bool
+    var reason: String
     
 }
 
