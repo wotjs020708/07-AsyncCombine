@@ -19,7 +19,7 @@ struct ContentView: View {
                 Text(viewModel.usernameMessage)
                     .foregroundStyle(Color.red)
             }
-            
+
             Section {
                 Button ("Sign up") {
                     print("Signing up as \(viewModel.username)")
