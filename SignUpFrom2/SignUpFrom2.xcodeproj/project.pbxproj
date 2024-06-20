@@ -15,6 +15,7 @@
 		4B0F3C5E2C23AB5700467524 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F3C5D2C23AB5700467524 /* Helper.swift */; };
 		4B0F3C602C23AB8000467524 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F3C5F2C23AB8000467524 /* AuthenticationService.swift */; };
 		4B0F3C622C2404B300467524 /* Publisher+Dump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F3C612C2404B300467524 /* Publisher+Dump.swift */; };
+		4B0F3C642C240BDD00467524 /* Publisher+Retry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F3C632C240BDD00467524 /* Publisher+Retry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		4B0F3C5D2C23AB5700467524 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		4B0F3C5F2C23AB8000467524 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		4B0F3C612C2404B300467524 /* Publisher+Dump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Dump.swift"; sourceTree = "<group>"; };
+		4B0F3C632C240BDD00467524 /* Publisher+Retry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Retry.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				4B0F3C612C2404B300467524 /* Publisher+Dump.swift */,
 				4B0F3C512C23AAE900467524 /* Assets.xcassets */,
 				4B0F3C532C23AAE900467524 /* Preview Content */,
+				4B0F3C632C240BDD00467524 /* Publisher+Retry.swift */,
 			);
 			path = SignUpFrom2;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 				4B0F3C4E2C23AAE800467524 /* SignUpFrom2App.swift in Sources */,
 				4B0F3C622C2404B300467524 /* Publisher+Dump.swift in Sources */,
 				4B0F3C5C2C23AB4C00467524 /* SignUpFormViewModel.swift in Sources */,
+				4B0F3C642C240BDD00467524 /* Publisher+Retry.swift in Sources */,
 				4B0F3C5E2C23AB5700467524 /* Helper.swift in Sources */,
 				4B0F3C602C23AB8000467524 /* AuthenticationService.swift in Sources */,
 			);
