@@ -50,7 +50,9 @@ struct ContentView: View {
         }
         .sheet(isPresented: $isAddNewWordDialogPresnted){
             NavigationStack {
-                AddWordView()
+                AddWordView{ word in
+                        print(word)
+                }
             }
         }
     }
