@@ -48,6 +48,9 @@ struct ContentView: View {
                 }
             }
         }
+        .refreshable {
+            await viewModel.refresh()
+        }
         .sheet(isPresented: $isAddNewWordDialogPresnted){
             NavigationStack {
                 AddWordView{ word in

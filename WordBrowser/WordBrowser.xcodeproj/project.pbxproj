@@ -61,8 +61,8 @@
 			children = (
 				4BB807F82C292A80002F9361 /* Info.plist */,
 				4BB807E92C2929E7002F9361 /* WordBrowserApp.swift */,
-				4BB807EB2C2929E7002F9361 /* ContentView.swift */,
 				4BB807FD2C293F38002F9361 /* WordAPI.swift */,
+				4BB807EB2C2929E7002F9361 /* ContentView.swift */,
 				4BB807FB2C2936B3002F9361 /* AddWordView.swift */,
 				4BB807F92C292E3D002F9361 /* LibraryViewModel.swift */,
 				4BB807F72C292A05002F9361 /* Config.xcconfig */,
