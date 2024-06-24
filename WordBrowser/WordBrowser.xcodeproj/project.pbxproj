@@ -12,6 +12,7 @@
 		4BB807EE2C2929E8002F9361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BB807ED2C2929E8002F9361 /* Assets.xcassets */; };
 		4BB807F12C2929E8002F9361 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BB807F02C2929E8002F9361 /* Preview Assets.xcassets */; };
 		4BB807FA2C292E3D002F9361 /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB807F92C292E3D002F9361 /* LibraryViewModel.swift */; };
+		4BB807FC2C2936B3002F9361 /* AddWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB807FB2C2936B3002F9361 /* AddWordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		4BB807F72C292A05002F9361 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		4BB807F82C292A80002F9361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4BB807F92C292E3D002F9361 /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
+		4BB807FB2C2936B3002F9361 /* AddWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				4BB807F82C292A80002F9361 /* Info.plist */,
 				4BB807E92C2929E7002F9361 /* WordBrowserApp.swift */,
 				4BB807EB2C2929E7002F9361 /* ContentView.swift */,
+				4BB807FB2C2936B3002F9361 /* AddWordView.swift */,
 				4BB807F92C292E3D002F9361 /* LibraryViewModel.swift */,
 				4BB807F72C292A05002F9361 /* Config.xcconfig */,
 				4BB807ED2C2929E8002F9361 /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BB807FC2C2936B3002F9361 /* AddWordView.swift in Sources */,
 				4BB807EC2C2929E7002F9361 /* ContentView.swift in Sources */,
 				4BB807FA2C292E3D002F9361 /* LibraryViewModel.swift in Sources */,
 				4BB807EA2C2929E7002F9361 /* WordBrowserApp.swift in Sources */,
