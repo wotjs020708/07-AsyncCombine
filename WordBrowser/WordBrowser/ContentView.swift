@@ -49,7 +49,9 @@ struct ContentView: View {
             }
         }
         .refreshable {
+            print("\(#function) is on main thread BEFORE await \(Thread.isMainThread)")
             await viewModel.refresh()
+            print("\(#function) is on main thread AFTER await \(Thread.isMainThread)")
         }
         .sheet(isPresented: $isAddNewWordDialogPresnted){
             NavigationStack {
